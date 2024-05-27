@@ -58,3 +58,4 @@ const toggleModal = () => {
 	modalActive.value = !modalActive.value;
 };
 </script>
+
