@@ -5,7 +5,7 @@
         class="py-2 px-1 w-full bg-transparent border-b focus:border-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]">
         <ul class="absolute bg-secondary text-white w-full shadow-md py-2 px-1 top-[66px]" v-if="geocodingSearchResults">
         <p v-if="searchError">Sorry, something went wrong... Please try again.</p>
-        <p v-if="!searchError">
+        <p v-else-if="!searchError && geocodingSearchResults.length === 0">
           No results match your query, try a different term.
         </p>
         <template v-else>
@@ -35,9 +35,11 @@ function getSearchResults() {
         const urlRequest = `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery.value}&count=10&language=en&format=json`
 
         const result = await axios.get(urlRequest);
-        geocodingSearchResults.value = result.data.results;
+        geocodingSearchResults.value = result.data.results ?? [];
         console.log(geocodingSearchResults.value);
         console.log(searchError.value);
+        // searchError.value = false;
+
       } catch (error) {
         searchError.value = true;
       }
