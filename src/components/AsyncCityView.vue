@@ -57,6 +57,9 @@ const getWeatherData = async () => {
 		const localOffset = new Date().getTimezoneOffset() * 60000;
 		const utc = weatherData.data.dt * 1000 + localOffset;
 		weatherData.data.currentTime = utc + 1000 * weatherData.data.timezone
+
+		await new Promise((res) => setTimeout(res, 1000));
+
 		return weatherData.data;
 	} catch (error) {
 		console.log(error);
