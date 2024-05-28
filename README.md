@@ -12,6 +12,12 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+To make works the OpenWeatherAPI, you should create a .env file that content the API KEY like this :
+```
+VITE_API_WEATHERKEY=YOUR_API_KEY
+```
+### Setup the project
+
 ```sh
 npm install
 ```
